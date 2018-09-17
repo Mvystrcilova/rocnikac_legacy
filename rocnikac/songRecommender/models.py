@@ -52,7 +52,7 @@ class Song_in_List(models.Model):
 
 
 class Played_Song(models.Model):
-    song_id = models.ForeignKey(Song, on_delete=models.CASCADE)
+    song_id1 = models.ForeignKey(Song, on_delete=models.CASCADE)
     user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     numOfTimesPlayed = models.PositiveIntegerField(default=1) #esi neco nebude fungovat tak je to tady
     OPINION_CHOICES = (
@@ -67,7 +67,8 @@ class Played_Song(models.Model):
 
 
 class Distance(models.Model):
-    songs = models.ForeignKey(Song, on_delete=models.CASCADE, null=True)
+    song_1 = models.ForeignKey(Song, on_delete=models.CASCADE, null=True, related_name='song_1')
+    song_2 = models.ForeignKey(Song, on_delete=models.CASCADE, null=True, related_name='song_2')
     distance = models.FloatField(default=0)
     DISTANCE_CHOICES = (
             ('TF-idf','TF-idf'),
